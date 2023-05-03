@@ -1,0 +1,62 @@
+td.title {
+    background-color: "#dddddd";
+    align: "center";
+    font-size: 14pt;
+    padding: 5px;
+}
+.base_h1 {align: "center";
+    font-size: 100pt;
+    padding: 5px;
+}
+td.ordinary {
+    background-color: "#eeeeff";
+    align: "center";
+    font-size: 14pt;
+    padding: 5px;
+}
+h4 {
+    color: #cccccc;
+    padding: 20px;
+}
+p {
+    font-size: 14pt;
+}
+
+
+.wrapper {
+  perspective: 1px;
+  height: 75vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: rgb(66,49,137)
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0vh 0;
+}
+
+img {
+  width: 100%;
+}
+
+first_big {
+  font-size: 100px;
+  color: white;
+}
+
+.box.box-back {
+  transform: translateZ(0);
+  z-index: 99;
+  text-align: center;
+  padding: 35vh 0;
+}
+.box.box-front {
+  width: 1500px;
+  transform: translateZ(-1px) scale(3);
+}
+
