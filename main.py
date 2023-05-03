@@ -7,8 +7,6 @@ from data.login_form import LoginForm
 from data.users import User
 from data.register import RegisterForm
 
-# проверка
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
