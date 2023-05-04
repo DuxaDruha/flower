@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect
 from flask_login import LoginManager, login_user, login_required, logout_user
 from flask_login import current_user
 from data import db_session
@@ -6,6 +6,7 @@ from data.login_form import LoginForm
 from data.users import User
 from data.register import RegisterForm
 from sqlalchemy import update
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -57,9 +58,12 @@ def register():
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
 
+@app.route("/idea")
+def index():
+    return render_template("idea.html", title='Главная')
 
 @app.route("/")
-def index():
+def idea():
     return render_template("index.html", title='Главная')
 
 
@@ -70,12 +74,8 @@ def info():
 
 @app.route("/random", methods=['POST', 'GET'])
 def random():
-    COLOR = '8b00ff'
-    form = LoginForm()
-    if form.validate_on_submit():
-        COLOR = request.form['color']
-        db_session.execute(update(users).where(users.id == current_user.id).values(color=COLOR))
-        print(COLOR)
+    bar = request.form['test']
+    print(bar)
     return render_template("random.html", title='Random')
 
 
