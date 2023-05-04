@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="UTF-8">
+<br>
+<a>Chose a color:  </a>
+<form method="post" style="justify-content: center" action="/random"><input id="myColor" type="color" name="color"
+           value="#{current_user.color}" ><button type="submit" >Chose </button>
+</form>
+<br>
+<br>
+<a>Some unusual combinations</a>
+
+
+
+<div class="btn-group my-5">
+          <a href="#" class="btn btn-outline-light" aria-current="page"><i class="fas fa-file-download me-2"></i> Какая-то кнопка </a>
+          <a href="#" class="btn btn-outline-light">Ещё кнопка <i class="fas fa-expand ms-2"></i></a>
+       </div>
+
+
+
+
+{% endblock %}

@@ -1,11 +1,11 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from flask_login import LoginManager, login_user, login_required, logout_user
-
+from flask_login import current_user
 from data import db_session
-from data.jobs import Jobs
 from data.login_form import LoginForm
 from data.users import User
 from data.register import RegisterForm
+from sqlalchemy import update
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -68,6 +68,25 @@ def info():
     return render_template("info.html", title='Information')
 
 
+
+
+
+
+@app.route("/random", methods=['POST', 'GET'])
+def random():
+    COLOR = '8b00ff'
+    form = LoginForm()
+    if form.validate_on_submit():
+        COLOR = request.form['color']
+        db_session.execute(update(users).where(users.id == current_user.id).values(color=COLOR))
+        print(COLOR)
+    return render_template("random.html", title='Random')
+
+
+
+
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -77,7 +96,7 @@ def logout():
 
 def main():
     db_session.global_init("db/mars_explorer.sqlite")
-    app.run(debug=True)
+    app.run(port=8000, debug=True)
 
 
 if __name__ == '__main__':
