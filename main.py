@@ -1,10 +1,6 @@
 from flask import Flask, render_template, redirect
 from flask_login import LoginManager, login_user, login_required, logout_user
 
-
-# проверка коммита написал рандомный комментарий
-
-
 from data import db_session
 from data.jobs import Jobs
 from data.login_form import LoginForm
