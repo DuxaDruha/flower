@@ -68,10 +68,6 @@ def info():
     return render_template("info.html", title='Information')
 
 
-
-
-
-
 @app.route("/random", methods=['POST', 'GET'])
 def random():
     COLOR = '8b00ff'
@@ -84,9 +80,6 @@ def random():
 
 
 
-
-
-
 @app.route('/logout')
 @login_required
 def logout():
@@ -95,7 +88,7 @@ def logout():
 
 
 def main():
-    db_session.global_init("db/mars_explorer.sqlite")
+    db_session.global_init("db/explorer.sqlite")
     app.run(port=8000, debug=True)
 
 
