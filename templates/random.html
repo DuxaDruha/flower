@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="UTF-8">
+<br>
+<a>Chose a color:  </a>
+<form method="post" style="justify-content: center" action="/random"><input id="myColor" type="color" name="color"
+           value="#{current_user.color}" ><button type="submit" >Chose </button>
+</form>
+<br>
+<br>
+<a>Some unusual combinations</a>
+
+
+
+<div_s class="bblock" style="width: 150px; height: 150px; float: left; border: 2px solid red;">
+    <div class="bblock" style="width: 150px; height: 150px; float: left; border: 2px solid red;">
+        <div class="bblock" style="width: 150px; height: 150px; float: left; border: 2px solid red;">
+
+
+
+
+{% endblock %}

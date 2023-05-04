@@ -1,8 +1,7 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from flask_login import LoginManager, login_user, login_required, logout_user
 
 from data import db_session
-from data.jobs import Jobs
 from data.login_form import LoginForm
 from data.users import User
 from data.register import RegisterForm
@@ -66,6 +65,29 @@ def index():
 @app.route("/info")
 def info():
     return render_template("info.html", title='Information')
+
+
+
+
+
+
+@app.route("/random", methods=['POST', 'GET'])
+def random():
+    COLOR = '8b00ff'
+    form = LoginForm()
+    if form.validate_on_submit():
+        COLOR = request.form['color']
+        db_sess = db_session.create_session()
+        i = current_user
+        i.color = COLOR
+        session.add(i)
+        db_sess.commit()
+        print(COLOR)
+    return render_template("random.html", title='Random')
+
+
+
+
 
 
 @app.route('/logout')

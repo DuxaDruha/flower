@@ -22,13 +22,14 @@ p {
     font-size: 14pt;
 }
 
-
 .wrapper {
   perspective: 1px;
-  height: 75vh;
   overflow-x: hidden;
   overflow-y: auto;
+  height: 75vh;
+  width: 1170px;
   background-color: rgb(66,49,137)
+
 }
 
 .box {
@@ -59,4 +60,35 @@ first_big {
   width: 1500px;
   transform: translateZ(-1px) scale(3);
 }
+
+.square {
+    width: 150px;
+    height: 150px;
+    border: solid 0.3px;
+    border-color: black;
+}
+#myColor {
+width: 150px;
+height: 150px; }
+
+div_s { float: left;
+    line-height: 120px;
+    font-size: 40px;
+    background: dodgerblue;
+    color: white;
+    margin-top: 60px;
+    width: 320px;
+    margin-right: 10px;
+    text-align: center;}
+
+.bblock {
+    float: left;
+    line-height: 120px;
+    font-size: 40px;
+    background: dodgerblue;
+    color: white;
+    width: 320px;
+    margin-right: 10px;
+    text-align: center;}
+
 
