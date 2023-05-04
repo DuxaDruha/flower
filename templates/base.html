@@ -11,20 +11,20 @@
 <body>
 <header style='background-color: rgb(66,49,137)'>
     <nav class="navbar navbar-light bg-light">
-        <h1 style='font-size: 25pt; margin-left:5%'>Our contacts: des_make@mail.ru </h1>
+        <h1 style='font-size: 20pt; margin-left:-1%; margin-top: 0.5%'>Our contacts: des_make@mail.ru </h1>
 
         {% if current_user.is_authenticated %}
         <a style='align:"right"' class="navbar-brand" href="/logout">{{ current_user.name }} {{ current_user.surname }}</a>
         {% else %}
         <p>
-            <a style='background-color: rgb(66,49,137)' class="btn btn-primary " href="/register">Register</a>
-            <a style='background-color: rgb(66,49,137)' class="btn btn-success" href="/login">Log in</a>
+            <a style='background-color: rgb(66,49,137); margin-top: 10%' class="btn btn-primary " href="/register">Register</a>
+            <a style='background-color: rgb(66,49,137); margin-top: 10%' class="btn btn-success" href="/login">Log in</a>
         </p>
         {% endif %}
     </nav>
     <br>
     <first_big style='font-size: 35pt; margin-left:39%'>The best designer </first_big>
-    <a style='margin-left:95%; border:3px rgb(66,49,137)  solid; font-size: 20pt; background-color: rgb(66,49,137)' class="btn btn-success" href="/info">Info</a>
+    <a style='margin-top: -4%; margin-left: 90%; border:3px rgb(66,49,137)  solid; font-size: 20pt; background-color: rgb(66,49,137)' class="btn btn-success" href="/info">Info</a>
 </header>
 <!-- Begin page content -->
 <main role="main" class="container">
