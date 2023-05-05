@@ -1,18 +1,68 @@
 from flask import Flask, render_template, redirect
-from flask_login import LoginManager, login_user, login_required, logout_user
+from flask_login import LoginManager
+from flask_login import login_user
+from flask_login import login_required
+from flask_login import logout_user
 from flask_login import current_user
 from data import db_session
 from data.login_form import LoginForm
 from data.users import User
 from data.register import RegisterForm
 from sqlalchemy import update
-from flask import Flask, request, render_template
+from flask import Flask
+from flask_login import request
+from flask_login import render_template
+from random import randint
 
+K = ''
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+def random_color():
+    r = randint(0, 255)
+    g = randint(0, 255)
+    b = randint(0, 255)
+    rand_color = (r, g, b)
+    return rand_color
+
+
+'''По дому бродит привиденье.
+Весь день шаги над головой.
+На чердаке мелькают тени.
+По дому бродит домовой.
+
+Везде болтается некстати,
+Мешается во все дела,
+В халате крадется к кровати,
+Срывает скатерть со стола.
+
+Ног у порога не обтерши,
+Вбегает в вихре сквозняка
+И с занавеской, как с танцоршей,
+Взвивается до потолка.
+
+Кто этот баловник-невежа
+И этот призрак и двойник?
+Да это наш жилец приезжий,
+Наш летний дачник-отпускник.
+
+На весь его недолгий роздых
+Мы целый дом ему сдаем.
+Июль с грозой, июльский воздух
+Снял комнаты у нас внаем.
+
+Июль, таскающий в одёже
+Пух одуванчиков, лопух,
+Июль, домой сквозь окна вхожий,
+Всё громко говорящий вслух.
+
+Степной нечесаный растрепа,
+Пропахший липой и травой,
+Ботвой и запахом укропа,
+Июльский воздух луговой.'''
 
 
 @login_manager.user_loader
@@ -58,9 +108,11 @@ def register():
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
 
+
 @app.route("/idea")
 def index():
     return render_template("idea.html", title='Главная')
+
 
 @app.route("/")
 def idea():
@@ -74,10 +126,21 @@ def info():
 
 @app.route("/random", methods=['POST', 'GET'])
 def random():
-    bar = request.form['test']
-    print(bar)
-    return render_template("random.html", title='Random')
+    color = random_color()
+    r_color = ((255 -color[0]) % 255, (255 -color[1]) % 255, (255 -color[2]) % 255)
+    t_color = ((color[0] - 83) % 255, (color[1] - 83) % 255, (color[2] - 83) % 255)
+    t1_color = ((color[0] - 83 * 2) % 255, (color[1] - 83 * 2) % 255, (color[2] - 83 * 2) % 255)
+    temple = render_template("random.html", title='Random')
+    t = temple.replace('$$$', str(color))
+    t = t.replace('###', str(r_color))
+    t = t.replace('***', str(t_color))
+    t = t.replace('!!!', str(t1_color))
+    return t
 
+
+@app.route("/colors", methods=['POST', 'GET'])
+def colors():
+    return render_template("colors.html", title='Colors')
 
 
 @app.route('/logout')
@@ -89,7 +152,8 @@ def logout():
 
 def main():
     db_session.global_init("db/explorer.sqlite")
-    app.run(port=8000, debug=True)
+    app.run(port=8000)
+    print(K)
 
 
 if __name__ == '__main__':

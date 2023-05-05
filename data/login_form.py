@@ -9,3 +9,39 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember me')
     submit = SubmitField('Sign in')
+
+'''
+    Ночевала
+    тучка
+    золотая
+    На
+    груди
+    утеса - великана;
+    Утром
+    в
+    путь
+    она
+    умчалась
+    рано,
+    По
+    лазури
+    весело
+    играя;
+
+    Но
+    остался
+    влажный
+    след
+    в
+    морщине
+    Старого
+    утеса.Одиноко
+    Он
+    стоит, задумался
+    глубоко,
+    И
+    тихонько
+    плачет
+    он
+    в
+    пустыне. '''
